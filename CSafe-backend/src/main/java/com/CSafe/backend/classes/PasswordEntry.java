@@ -49,9 +49,31 @@ public class PasswordEntry {
 	
 	/* MEMBER FUNCTIONS */
 	
-//	@Override toString() {
-//		
-//	}
+	@Override public boolean equals(Object arbObj) {
+		if (arbObj == null) { return false; }
+		else if (getClass() != arbObj.getClass()) { return false; }
+		else if (this == arbObj) { return true; }
+		
+		PasswordEntry passwordEntryObj = (PasswordEntry) arbObj;
+		if (this.passwordEntryId == passwordEntryObj.passwordEntryId &&
+			    this.userObj.equals(passwordEntryObj.userObj) &&
+			    this.timestampObj.equals(passwordEntryObj.timestampObj) &&
+			    this.notes.equals(passwordEntryObj.notes) &&
+			    this.plaintextPassword.equals(passwordEntryObj.plaintextPassword) &&
+			    this.url.equals(passwordEntryObj.url) &&
+			    this.username.equals(passwordEntryObj.username)) {
+		    return true;
+		} else {
+		    return false;
+		}
+
+	}
+	
+	@Override public String toString() {
+		return "PasswordEntry {userObj=" + this.userObj.toString() + ", timestampObj=" + this.timestampObj.toString() + 
+				", entryTitle=" + this.entryTitle + ", notes=" + this.notes + ", plaintextPassword=" + this.plaintextPassword + 
+				", url=" + this.url + ", username=" + this.username + "}";
+	}
 	
 	
 	/* GETTERS */
