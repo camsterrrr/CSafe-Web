@@ -30,9 +30,23 @@ public class User {
 	
 	/* MEMBER FUNCTIONS */
 	
-//	@Override toString() {
-//		
-//	}
+	@Override public boolean equals(Object arbObj) {
+		if (arbObj == null) { return false; }
+		else if (getClass() != arbObj.getClass()) { return false; }
+		else if (this == arbObj) { return true; }
+		
+		User userObj = (User) arbObj;
+		if ((this.userId == userObj.userId) &&
+				(this.email.equals(userObj.email)) &&
+				(this.masterPasswordHash.equals(userObj.masterPasswordHash)) &&
+				(this.username.equals(userObj.username))) {
+			return true;
+		} else { return false; }
+	}
+	
+	@Override public String toString() {
+		return "User {email=" + this.email + ", masterPasswordHash=" + masterPasswordHash + ", username=" + username +"}";
+	}
 	
 	
 	/* GETTERS */

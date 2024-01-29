@@ -6,15 +6,15 @@ import javax.persistence.*;
 public class Timestamp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int timestampId;
+	private int timestampId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id")
-	User userObj;
+	private User userObj;
 	
-	long timeCreated;
-	long lastAccessed;
-	long lastModified;
+	private long timeCreated;
+	private long lastAccessed;
+	private long lastModified;
 	
 	
 	/* CONSTRUCTORS */
@@ -36,9 +36,27 @@ public class Timestamp {
 	
 	/* MEMBER FUNCTIONS */
 	
-//	@Override public String toString() {
-//		
-//	}
+	@Override public boolean equals(Object arbObj) {
+		if (arbObj == null) { return false; }
+		else if (getClass() != arbObj.getClass()) { return false; }
+		else if (this == arbObj) { return true; }
+		
+		Timestamp timestampObj = (Timestamp) arbObj;
+		if (this.timestampId == timestampObj.timestampId &&
+			    this.userObj.equals(timestampObj.userObj) &&
+			    this.timeCreated == timestampObj.timeCreated &&
+			    this.lastAccessed == timestampObj.lastAccessed &&
+			    this.lastModified == timestampObj.lastModified) {
+		    return true;
+		} else {
+		    return false;
+		}
+	}
+	
+	@Override public String toString() {
+		return "Timestamp {timestamp=" + this.userObj.toString() + ", lastAccessed=" + this.lastAccessed + ", lastModified=" + this.lastModified +
+				", timeCreated=" + this.timeCreated + "}";
+	}
 	
 	
 	/* GETTERS */
