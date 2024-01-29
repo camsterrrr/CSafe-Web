@@ -6,15 +6,15 @@ import javax.persistence.*;
 public class Timestamp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int timestampId;
+	private int timestampId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id")
-	User userObj;
+	private User userObj;
 	
-	long timeCreated;
-	long lastAccessed;
-	long lastModified;
+	private long timeCreated;
+	private long lastAccessed;
+	private long lastModified;
 	
 	
 	/* CONSTRUCTORS */
